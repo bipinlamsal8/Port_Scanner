@@ -29,3 +29,7 @@ def validate_ip(ip_address): # ip address is validated using this function
             return False
 
     return True
+
+
+def validate_port(port): # port number is validated using this function
+    return 1 <= port <= 65535
