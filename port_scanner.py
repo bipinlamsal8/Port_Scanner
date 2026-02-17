@@ -14,3 +14,18 @@ class PortResult:
     def display(self):
         time_str = time.strftime('%H:%M:%S', time.localtime(self.timestamp))
         return f"Port {self.port} ({self.service}) : {self.status} - Scanned at {time_str}"
+
+def validate_ip(ip_address): # ip address is validated using this function
+     
+    parts = ip_address.split(".")
+    if len(parts) != 4:
+        return False
+
+    for part in parts:
+        if not part.isdigit():
+            return False
+        num = int(part)
+        if num < 0 or num > 255:
+            return False
+
+    return True
