@@ -54,3 +54,29 @@ def scan_single_port(target, port, timeout=1.0): # this function is used to scan
         return "FILTERED", "unknown"
     except socket.error:
         return "ERROR", "unknown"
+
+def scan_port_range(target, start_port, end_port): # this function is used to scan a range of ports and return the results as a list of PortResult objects
+    results = []
+
+    print("\n" + "=" * 50)
+    print(f"Scanning {target} from port {start_port} to {end_port}")
+    print("=" * 50)
+
+    start_time = time.time()
+
+    for port in range(start_port, end_port + 1):
+        status, service = scan_single_port(target, port)
+        result = PortResult(port, status, service, time.time())
+        results.append(result)
+
+        if status == "OPEN":
+            print(f"[+] {result.display()}")
+
+    end_time = time.time()
+    duration = end_time - start_time
+
+    print("\nScan Complete")
+    print(f"Total ports scanned: {len(results)}")
+    print(f"Scan duration: {duration:.2f} seconds")
+
+    return results
