@@ -33,3 +33,24 @@ def validate_ip(ip_address): # ip address is validated using this function
 
 def validate_port(port): # port number is validated using this function
     return 1 <= port <= 65535
+
+def scan_single_port(target, port, timeout=1.0): # this function is used to scan a single port and return the status and service information
+    try:
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
+            sock.settimeout(timeout)
+            result = sock.connect_ex((target, port))
+
+            try:
+                service = socket.getservbyport(port)
+            except OSError:
+                service = "unknown"
+
+            if result == 0:
+                return "OPEN", service
+            else:
+                return "CLOSED", service
+
+    except socket.timeout:
+        return "FILTERED", "unknown"
+    except socket.error:
+        return "ERROR", "unknown"
