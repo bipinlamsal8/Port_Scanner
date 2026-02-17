@@ -80,3 +80,9 @@ def scan_port_range(target, start_port, end_port): # this function is used to sc
     print(f"Scan duration: {duration:.2f} seconds")
 
     return results
+
+
+def main(): #CLI for port scannerr
+    print("=" * 50)
+    print("        NETWORK PORT SCANNER")
+    print("=" * 50)
