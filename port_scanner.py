@@ -92,3 +92,12 @@ def main(): #CLI for port scannerr
         if validate_ip(target):
             break
         print("Invalid IP format. Example: 192.168.1.1")
+
+    while True: # until user puts valid start port, it will keep asking for input
+        try:
+            start_port = int(input("Enter start port (1-65535): "))
+            if validate_port(start_port):
+                break
+            print("Port must be between 1 and 65535.")
+        except ValueError:
+            print("Please enter a valid number.")
