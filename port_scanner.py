@@ -101,3 +101,12 @@ def main(): #CLI for port scannerr
             print("Port must be between 1 and 65535.")
         except ValueError:
             print("Please enter a valid number.")
+
+    while True: # until user puts valid end port, it will keep asking for input
+        try:
+            end_port = int(input("Enter end port (1-65535): "))
+            if validate_port(end_port) and end_port >= start_port:
+                break
+            print("End port must be >= start port.")
+        except ValueError:
+            print("Please enter a valid number.")
