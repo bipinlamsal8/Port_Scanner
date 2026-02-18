@@ -118,4 +118,7 @@ def main(): #CLI for port scannerr
         for result in results:
             file.write(result.display() + "\n")
 
-    print("Results saved to scan_results.txt") 
+    print("Results saved to scan_results.txt")
+
+if __name__ == "__main__": # this is the entry point of the program, it calls the main function to start the port scanner
+    main() 
