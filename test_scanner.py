@@ -7,3 +7,5 @@ class TestScanner(unittest.TestCase):
         self.assertTrue(validate_port(65535))
         self.assertFalse(validate_port(0))
         self.assertFalse(validate_port(65536))
+if __name__ == '__main__':
+    unittest.main()
