@@ -86,3 +86,9 @@ def main(): #CLI for port scannerr
     print("=" * 50)
     print("        NETWORK PORT SCANNER")
     print("=" * 50)
+    
+    while True: # until user puts valid ip address, it will keep asking for input
+        target = input("Enter target IP address: ")
+        if validate_ip(target):
+            break
+        print("Invalid IP format. Example: 192.168.1.1")
