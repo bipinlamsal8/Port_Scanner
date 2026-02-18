@@ -1,0 +1,8 @@
+Scan Results for 127.0.0.1
+Scanned at: Wed Feb 18 22:07:44 2026
+
+Port 1 (unknown) : CLOSED - Scanned at 22:07:40
+Port 2 (unknown) : CLOSED - Scanned at 22:07:41
+Port 3 (unknown) : CLOSED - Scanned at 22:07:42
+Port 4 (unknown) : CLOSED - Scanned at 22:07:43
+Port 5 (unknown) : CLOSED - Scanned at 22:07:44
