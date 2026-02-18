@@ -110,3 +110,12 @@ def main(): #CLI for port scannerr
             print("End port must be >= start port.")
         except ValueError:
             print("Please enter a valid number.")
+    results = scan_port_range(target, start_port, end_port)
+    
+    with open("scan_results.txt", "w") as file: # results are saved to a text file named scan_results.txt
+        file.write(f"Scan Results for {target}\n")
+        file.write(f"Scanned at: {time.ctime()}\n\n")
+        for result in results:
+            file.write(result.display() + "\n")
+
+    print("Results saved to scan_results.txt") 
