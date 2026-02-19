@@ -8,3 +8,7 @@ def start_scan():
     if not validate_ip(target):
         messagebox.showerror("Error", "Invalid IP address")
         return
+
+    try: 
+        start_port = int(entry_start.get())
+        end_port = int(entry_end.get())
