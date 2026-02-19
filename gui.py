@@ -16,3 +16,7 @@ def start_scan():
         if not validate_port(start_port) or not validate_port(end_port):
             messagebox.showerror("Error", "Ports must be between 1 and 65535")
             return
+
+        if start_port > end_port:
+            messagebox.showerror("Error", "Start port must be <= end port")
+            return
