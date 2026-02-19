@@ -12,3 +12,7 @@ def start_scan():
     try: 
         start_port = int(entry_start.get())
         end_port = int(entry_end.get())
+
+        if not validate_port(start_port) or not validate_port(end_port):
+            messagebox.showerror("Error", "Ports must be between 1 and 65535")
+            return
