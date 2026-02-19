@@ -11,6 +11,7 @@ class TestScanner(unittest.TestCase):
     def test_validate_ip(self):
         self.assertTrue(validate_ip("127.0.0.1"))
         self.assertFalse(validate_ip("256.256.256.256"))
+        self.assertFalse(validate_ip("abc.def.ghi.jkl"))
 
 if __name__ == '__main__':
     unittest.main()
