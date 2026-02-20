@@ -24,4 +24,13 @@ def start_scan():
         output_text.delete(1.0, tk.END) 
         output_text.insert(tk.END, f"Scanning {target}...\n\n")
 
-        start_time = time.time()            
+        start_time = time.time()      
+
+        results = scan_port_range(target, start_port, end_port) 
+
+        open_ports = 0
+
+        for result in results: 
+            if result.status == "OPEN":
+                output_text.insert(tk.END, result.display() + "\n")
+                open_ports += 1
