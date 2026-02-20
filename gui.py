@@ -30,7 +30,17 @@ def start_scan():
 
         open_ports = 0
 
-        for result in results: 
+        for result in results:
             if result.status == "OPEN":
                 output_text.insert(tk.END, result.display() + "\n")
                 open_ports += 1
+
+        end_time = time.time() 
+        duration = end_time - start_time
+
+        output_text.insert(tk.END, f"\nScan Complete\n")
+        output_text.insert(tk.END, f"Open ports found: {open_ports}\n")
+        output_text.insert(tk.END, f"Scan duration: {duration:.2f} seconds\n")
+
+    except ValueError:
+        messagebox.showerror("Error", "Invalid port number")
