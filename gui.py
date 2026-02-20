@@ -44,3 +44,21 @@ def start_scan():
 
     except ValueError:
         messagebox.showerror("Error", "Invalid port number")
+
+
+def save_results():
+    content = output_text.get(1.0, tk.END)
+
+    if not content.strip():
+        messagebox.showwarning("Warning", "Nothing to save!")
+        return
+
+    file_path = filedialog.asksaveasfilename(
+        defaultextension=".txt",
+        filetypes=[("Text Files", "*.txt")]
+    )
+
+    if file_path:
+        with open(file_path, "w") as f:
+            f.write(content)
+        messagebox.showinfo("Success", "Results saved successfully!")
