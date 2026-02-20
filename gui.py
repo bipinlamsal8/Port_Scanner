@@ -20,3 +20,8 @@ def start_scan():
         if start_port > end_port:
             messagebox.showerror("Error", "Start port must be <= end port")
             return
+
+        output_text.delete(1.0, tk.END) 
+        output_text.insert(tk.END, f"Scanning {target}...\n\n")
+
+        start_time = time.time()            
