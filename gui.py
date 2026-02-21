@@ -62,3 +62,8 @@ def save_results():
         with open(file_path, "w") as f:
             f.write(content)
         messagebox.showinfo("Success", "Results saved successfully!")
+
+# GUI Setup
+root = tk.Tk()
+root.title("Network Port Scanner")
+root.geometry("600x500")
