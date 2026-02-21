@@ -67,3 +67,8 @@ def save_results():
 root = tk.Tk()
 root.title("Network Port Scanner")
 root.geometry("600x500")
+
+tk.Label(root, text="Target IP:").pack()
+entry_ip = tk.Entry(root, width=30)
+entry_ip.pack()
+entry_ip.insert(0, "127.0.0.1")
