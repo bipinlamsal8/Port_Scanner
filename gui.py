@@ -72,3 +72,21 @@ tk.Label(root, text="Target IP:").pack()
 entry_ip = tk.Entry(root, width=30)
 entry_ip.pack()
 entry_ip.insert(0, "127.0.0.1")
+
+tk.Label(root, text="Start Port:").pack()
+entry_start = tk.Entry(root, width=30)
+entry_start.pack()
+entry_start.insert(0, "1")
+
+tk.Label(root, text="End Port:").pack()
+entry_end = tk.Entry(root, width=30)
+entry_end.pack()
+entry_end.insert(0, "100")
+
+tk.Button(root, text="Start Scan", command=start_scan).pack(pady=5)
+tk.Button(root, text="Save to File", command=save_results).pack(pady=5)
+
+output_text = scrolledtext.ScrolledText(root, height=20)
+output_text.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
+
+root.mainloop()
