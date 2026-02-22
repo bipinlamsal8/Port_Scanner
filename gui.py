@@ -4,6 +4,7 @@ from port_scanner import scan_single_port, validate_ip, validate_port, scan_port
 import time
 
 def start_scan():
+    target = entry_ip.get().strip()
 
     if not validate_ip(target):
         messagebox.showerror("Error", "Invalid IP address")
