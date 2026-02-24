@@ -5,8 +5,10 @@ import time
 import threading
 
 def start_scan():
-
+    btn_scan.config(state=tk.DISABLED)
+    status_label.config(text="Status: Scanning...")
     threading.Thread(target=run_scan, daemon=True).start()
+
 def run_scan():
     target = entry_ip.get().strip()
 
@@ -26,8 +28,8 @@ def run_scan():
             messagebox.showerror("Error", "Start port must be <= end port")
             return
 
-        output_text.delete(1.0, tk.END) 
-        output_text.insert(tk.END, f"Scanning {target}...\n\n")
+        root.after(0, lambda: output_text.delete(1.0, tk.END))
+        root.after(0, lambda: output_text.insert(tk.END, f"Scanning {target}...\n\n"))
 
         start_time = time.time()      
 
@@ -37,15 +39,17 @@ def run_scan():
 
         for result in results:
             if result.status == "OPEN":
-                output_text.insert(tk.END, result.display() + "\n")
+                root.after(0, lambda r=result: output_text.insert(tk.END, r.display() + "\n"))
                 open_ports += 1
 
         end_time = time.time() 
         duration = end_time - start_time
 
-        output_text.insert(tk.END, f"\nScan Complete\n")
-        output_text.insert(tk.END, f"Open ports found: {open_ports}\n")
-        output_text.insert(tk.END, f"Scan duration: {duration:.2f} seconds\n")
+        root.after(0, lambda: output_text.insert(tk.END, "\nScan Complete\n"))
+        root.after(0, lambda: output_text.insert(tk.END, f"Open ports found: {open_ports}\n"))
+        root.after(0, lambda: output_text.insert(tk.END, f"Scan duration: {duration:.2f} seconds\n"))
+        root.after(0, lambda: status_label.config(text="Status: Scan Complete"))
+        root.after(0, lambda: btn_scan.config(state=tk.NORMAL))
 
     except ValueError:
         messagebox.showerror("Error", "Invalid port number")
@@ -88,7 +92,8 @@ entry_end = tk.Entry(root, width=30)
 entry_end.pack()
 entry_end.insert(0, "100")
 
-tk.Button(root, text="Start Scan", command=start_scan).pack(pady=5)
+btn_scan = tk.Button(root, text="Start Scan", command=start_scan)
+btn_scan.pack(pady=5)
 tk.Button(root, text="Save to File", command=save_results).pack(pady=5)
 
 status_label = tk.Label(root, text="Status: Idle")
