@@ -5,7 +5,7 @@ import time
 class PortResult:
     # result of port scanner is stored in this keyword class
     
-    def __init__(self, port, status, service, timestamp):
+    def __init__(self, port, status, service, timestamp): 
         self.port = port
         self.status = status
         self.service = service
@@ -65,6 +65,7 @@ def scan_port_range(target, start_port, end_port): # this function is used to sc
     start_time = time.time()
 
     for port in range(start_port, end_port + 1):
+        print(f"Scanning port {port}...", end="\r") #this shows progress of scan
         status, service = scan_single_port(target, port)
         result = PortResult(port, status, service, time.time())
         results.append(result)
@@ -75,6 +76,7 @@ def scan_port_range(target, start_port, end_port): # this function is used to sc
     end_time = time.time()
     duration = end_time - start_time
 
+    print(" " * 50, end="\r")
     print("\nScan Complete")
     print(f"Total ports scanned: {len(results)}")
     print(f"Scan duration: {duration:.2f} seconds")
