@@ -2,8 +2,12 @@ import tkinter as tk
 from tkinter import messagebox, scrolledtext, filedialog
 from port_scanner import scan_single_port, validate_ip, validate_port, scan_port_range, PortResult
 import time
+import threading
 
 def start_scan():
+
+    threading.Thread(target=run_scan, daemon=True).start()
+def run_scan():
     target = entry_ip.get().strip()
 
     if not validate_ip(target):
