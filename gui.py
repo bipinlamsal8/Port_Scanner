@@ -91,6 +91,9 @@ entry_end.insert(0, "100")
 tk.Button(root, text="Start Scan", command=start_scan).pack(pady=5)
 tk.Button(root, text="Save to File", command=save_results).pack(pady=5)
 
+status_label = tk.Label(root, text="Status: Idle")
+status_label.pack()
+
 output_text = scrolledtext.ScrolledText(root, height=20)
 output_text.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
 
