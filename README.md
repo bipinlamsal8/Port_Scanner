@@ -28,7 +28,8 @@ are displayed in real time and saved to a text file.
 ## Requirements
 
 - Python 3.x
-- No external libraries required — uses Python standard library only
+- No external libraries required.
+- Uses Python standard library only
 - Tkinter is included with Python on Windows and macOS
 - On Linux, Tkinter may need to be installed separately (see below)
 
@@ -165,7 +166,7 @@ Results saved to scan_results.txt
 - Saves results to scan_results.txt
 - Graphical interface with scrollable output
 - Background threading in GUI to prevent freezing
-- Unit tested with 6 test cases — all passing
+- Unit tested with 6 test cases which all passed
 
 ---
 
